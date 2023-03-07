@@ -15,9 +15,9 @@ fun showWhenExpression() {
     val b = variableTwo.toInt()
 
     when (operation) {
-        "+" -> println(a + b)
-        "-" -> println(a - b)
-        "*" -> println(a * b)
+        "+", "plus" -> println(a + b)
+        "-", "minus" -> println(a - b)
+        "*", "times" -> println(a * b)
         else -> println("Unknown operator")
     }
 }
