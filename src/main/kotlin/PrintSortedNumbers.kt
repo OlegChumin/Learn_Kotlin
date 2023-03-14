@@ -49,6 +49,11 @@ fun sortingDataAccordingtoFlags(datalake: DataFromString): DataFromString {
 }
 
 fun sortingByAscendingOrder(dataLake: DataFromString): DataFromString {
+    TODO(
+        "correct logic here " +
+                "asc true - ascending, asc false - descending\n" +
+                "abc true - modulo numbers, abc false - by the absolute value of numbers on the numeric line"
+    )
     val intArrayOfNumbers = intArrayOf(dataLake.aNumber, dataLake.bNumber, dataLake.cNumber)
     Arrays.sort(intArrayOfNumbers)
     dataLake.aNumber = intArrayOfNumbers[0]
@@ -58,6 +63,11 @@ fun sortingByAscendingOrder(dataLake: DataFromString): DataFromString {
 }
 
 fun sortingByAbsoluteValue(dataLake: DataFromString): DataFromString {
+    TODO(
+        "correct logic here " +
+                "asc true - ascending, asc false - descending\n" +
+                "abc true - modulo numbers, abc false - by the absolute value of numbers on the numeric line"
+    )
     val intArrayOfNumbers = intArrayOf(abs(dataLake.aNumber), abs(dataLake.bNumber), abs(dataLake.cNumber))
     Arrays.sort(intArrayOfNumbers)
     dataLake.aNumber = intArrayOfNumbers[0]
