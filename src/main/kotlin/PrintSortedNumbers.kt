@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.math.abs
 
 /**
  * Invocation
@@ -12,20 +13,57 @@ const val INIT_VALUE_ZERO = 0
 
 fun main() {
 //    printSortedNumbers(-6, -2, 4, false, true)
-    printDataFromDataLake(readDataFromConsoleAndAddToDataLake())
+    val dataLake = readDataFromConsoleAndAddToDataLake()
+    println("Data before process: $dataLake")
+    println()
+    println("Data after sorting: ${sortingDataAccordingtoFlags(dataLake)}")
 }
 
 fun sortingDataAccordingtoFlags(datalake: DataFromString): DataFromString {
-    if (datalake.ascendingOrderFlag && !datalake.absoluteValueOrderFlag) {
-
+    return if (datalake.ascendingOrderFlag && !datalake.absoluteValueOrderFlag) {
+        println(
+            "ascendingOrderFlag = ${datalake.ascendingOrderFlag}; absoluteValueOrderFlag = " +
+                    "${datalake.absoluteValueOrderFlag} -> case when sorting go by ascending"
+        )
+        sortingByAscendingOrder(datalake)
     } else if ((datalake.ascendingOrderFlag && datalake.absoluteValueOrderFlag)) {
-
+        println(
+            "ascendingOrderFlag = ${datalake.ascendingOrderFlag}; absoluteValueOrderFlag = " +
+                    "${datalake.absoluteValueOrderFlag} -> case when sorting go by ascending then by absoluteValue"
+        )
+        sortingByAbsoluteValue(sortingByAscendingOrder(datalake))
     } else if (!datalake.ascendingOrderFlag && datalake.absoluteValueOrderFlag) {
-
+        println(
+            "ascendingOrderFlag = ${datalake.ascendingOrderFlag}; absoluteValueOrderFlag = " +
+                    "${datalake.absoluteValueOrderFlag} -> case when sorting go by absoluteValue"
+        )
+        sortingByAbsoluteValue(datalake)
     } else { //false false
-
+        println(
+            "ascendingOrderFlag = ${datalake.ascendingOrderFlag}; absoluteValueOrderFlag = " +
+                    "${datalake.absoluteValueOrderFlag} -> case when no sorting go"
+        )
+        datalake
     }
     return datalake
+}
+
+fun sortingByAscendingOrder(dataLake: DataFromString): DataFromString {
+    val intArrayOfNumbers = intArrayOf(dataLake.aNumber, dataLake.bNumber, dataLake.cNumber)
+    Arrays.sort(intArrayOfNumbers)
+    dataLake.aNumber = intArrayOfNumbers[0]
+    dataLake.bNumber = intArrayOfNumbers[1]
+    dataLake.cNumber = intArrayOfNumbers[2]
+    return dataLake
+}
+
+fun sortingByAbsoluteValue(dataLake: DataFromString): DataFromString {
+    val intArrayOfNumbers = intArrayOf(abs(dataLake.aNumber), abs(dataLake.bNumber), abs(dataLake.cNumber))
+    Arrays.sort(intArrayOfNumbers)
+    dataLake.aNumber = intArrayOfNumbers[0]
+    dataLake.bNumber = intArrayOfNumbers[1]
+    dataLake.cNumber = intArrayOfNumbers[2]
+    return dataLake
 }
 
 fun readDataFromConsoleAndAddToDataLake(): DataFromString {
@@ -44,10 +82,6 @@ fun readDataFromConsoleAndAddToDataLake(): DataFromString {
         if (scanner.hasNextBoolean()) scanner.next().toBoolean() else false
     scanner.close()
     return dataLake
-}
-
-fun printDataFromDataLake(dataLake: DataFromString) {
-    println("Source data to process: $dataLake")
 }
 
 class DataFromString {
