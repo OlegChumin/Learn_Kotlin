@@ -1,4 +1,5 @@
 import java.util.*
+
 /**
  * Invocation
  * Imagine you have a function that outputs three sorted numbers:
@@ -37,8 +38,10 @@ fun readDataFromConsoleAndAddToDataLake(): DataFromString {
     dataLake.aNumber = scanner.next().toInt()
     dataLake.bNumber = scanner.next().toInt()
     dataLake.cNumber = scanner.next().toInt()
-    dataLake.ascendingOrderFlag = scanner.next().toBoolean()
-    dataLake.absoluteValueOrderFlag = scanner.next().toBoolean()
+    dataLake.ascendingOrderFlag =
+        if (scanner.hasNextBoolean()) scanner.next().toBoolean() else true
+    dataLake.absoluteValueOrderFlag =
+        if (scanner.hasNextBoolean()) scanner.next().toBoolean() else false
     scanner.close()
     return dataLake
 }
