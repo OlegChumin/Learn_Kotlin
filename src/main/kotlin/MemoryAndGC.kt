@@ -19,6 +19,10 @@ fun fillArrayOfByteArrayElements(): Array<ArrayOfByte> {
     return Array(DEFAULT_ARRAY_SIZE) { ArrayOfByte.createByteArray() }
 }
 
+// В этом примере программа приостанавливается на 5 секунд перед и после создания массива объектов ArrayOfByte.
+// Это может быть полезно, например, если вы хотите увидеть визуальное представление изменения памяти в среде разработки
+// или средстве мониторинга.
+
 fun main() {
     println("Total memory before running the program: ${getTotalMemory()}")
     println("Free memory before running the program: ${getFreeMemory()}")
