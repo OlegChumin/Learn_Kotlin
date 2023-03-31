@@ -9,7 +9,8 @@ class ArrayOfByte(val byteArray: ByteArray) {
         const val DEFAULT_BYTE_ARRAY_SIZE = 1024
 
         fun createByteArray(byteArraySize: Int = DEFAULT_BYTE_ARRAY_SIZE): ArrayOfByte {
-            val byteArray = ByteArray(byteArraySize) { Random.nextInt(Byte.MIN_VALUE.toInt(), Byte.MAX_VALUE.toInt() + 1).toByte() }
+            val byteArray =
+                ByteArray(byteArraySize) { Random.nextInt(Byte.MIN_VALUE.toInt(), Byte.MAX_VALUE.toInt() + 1).toByte() }
             return ArrayOfByte(byteArray)
         }
     }
@@ -24,8 +25,9 @@ fun fillArrayOfByteArrayElements(): Array<ArrayOfByte> {
 // или средстве мониторинга.
 
 fun main() {
-    println("Total memory before running the program: ${getTotalMemory()}")
-    println("Free memory before running the program: ${getFreeMemory()}")
+    println("Total memory before running the program: ${getTotalMemory() / 1024}")
+    println("Free memory before running the program: ${getFreeMemory() / 1024}")
+    println("Total used memory before running the program: ${(getTotalMemory() - getFreeMemory()) / 1024}")
 
     Thread.sleep(5000)
 
@@ -33,15 +35,14 @@ fun main() {
 
     Thread.sleep(5000)
 
-    println("Total memory after creating the bunch of the Objects: ${getTotalMemory()}")
-    println("Free memory after creating the bunch of the Objects: ${getFreeMemory()}")
+    println("Total memory after creating the bunch of the Objects: ${getTotalMemory() / 1024}")
+    println("Free memory after creating the bunch of the Objects: ${getFreeMemory() / 1024}")
+    println("Total used memory after creating the bunch of the Objects: ${(getTotalMemory() - getFreeMemory()) / 1024}")
 
 }
 
 fun getTotalMemory() = Runtime.getRuntime().totalMemory()
 fun getFreeMemory() = Runtime.getRuntime().freeMemory()
-
-
 
 
 /**
