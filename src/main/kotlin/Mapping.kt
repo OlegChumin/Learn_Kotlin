@@ -34,4 +34,27 @@ fun main() {
     println("numbers4.associateBy { it.first().uppercaseChar(): ${numbers4.associateBy { it.first().uppercaseChar() }}")
     println("numbers4.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length })" +
             ": ${numbers4.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length })}")
+    println()
+
+    /**
+     * определение класса FullName с двумя свойствами firstName и lastName, которые являются строками. data указывает,
+     * что это data-класс, и автоматически генерирует методы equals(), hashCode(), toString() и другие вспомогательные
+     * функции.
+     * */
+    data class FullName (val firstName: String, val lastName: String)
+
+    fun parseFullName(fullName: String): FullName {
+        val nameParts = fullName.split(" ") //.разделение полного имени на отдельные части по
+        // пробелу. Результат сохраняется в переменную nameParts.
+        if (nameParts.size == 2) { //проверка, что имя состоит из двух частей (имени и фамилии
+            return FullName(nameParts[0], nameParts[1])
+        } else throw Exception("Wrong name format") //если имя не состоит из двух частей, выбрасывается исключение.
+    }
+
+    val names = listOf("Alice Adams", "Brian Brown", "Clara Campbell")
+    /** вывод результата функции associate на экран. associate преобразует список names в Map, используя лямбда-функцию.
+     * Внутри лямбда-функции вызывается parseFullName(name), который возвращает объект FullName. Затем используется
+     * функция let для преобразования объекта FullName в пару ключ-значение, где ключ - фамилия, а значение - имя.
+     * Результирующий Map будет иметь структуру: {Adams=Alice, Brown=Brian, Campbell=Clara}.*/
+    println(names.associate { name -> parseFullName(name).let { it.lastName to it.firstName } })
 }
