@@ -27,9 +27,11 @@ fun main() {
     val numbers3 = listOf("one", "two", "three", "four")
     println("numbers3: $numbers3")
     println(numbers3.associateWith { it.length })
+    println()
 
     val numbers4 = listOf("one", "two", "three", "four")
-
-    println(numbers4.associateBy { it.first().uppercaseChar() })
-    println(numbers4.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length }))
+    println("numbers4: $numbers4")
+    println("numbers4.associateBy { it.first().uppercaseChar(): ${numbers4.associateBy { it.first().uppercaseChar() }}")
+    println("numbers4.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length })" +
+            ": ${numbers4.associateBy(keySelector = { it.first().uppercaseChar() }, valueTransform = { it.length })}")
 }
