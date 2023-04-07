@@ -25,5 +25,22 @@ fun carPrice(old: Int, kilometers: Int, maximumSpeed: Int, automatic: Boolean){
 }
 
 fun main() {
-    carPrice(5, 119_999, 130, false)
+//    carPrice(5, 119_999, 130, false)
+    val numbers = mutableListOf(1, 2, 3, 4, 5)
+
+//    for (element in numbers) {
+//        println(element)
+//    }
+
+//    for (i in numbers.indices) {
+//        println(i)
+//    }
+//    for (i in numbers.indices) {
+//        println(i)
+//    }
+
+    for (i in numbers.indices) {
+        println(numbers[i])
+    }
+
 }
