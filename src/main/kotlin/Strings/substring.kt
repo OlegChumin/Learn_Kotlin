@@ -14,4 +14,8 @@ fun main() {
     print("Line #5")
 //    println(example.substring(0, 8))  // 5
 //    Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 8
+    println()
+
+    val hello = "Hello world"
+    println(hello.replace("Hello ", ""))
 }
