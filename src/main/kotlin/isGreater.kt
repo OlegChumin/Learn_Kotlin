@@ -1,12 +1,11 @@
-fun isGreater(number1: Int, number2: Int, number3: Int, number4: Int): Boolean {
-    return (number1 + number2) > (number3 + number4)
+fun main() = List("4".toInt()) { readln().toInt() }.let {
+    println(it.first() + it["1".toInt()] > it["2".toInt()] + it.last())
 }
 
-fun main() {
-    val number1 = readLine()!!.toInt()
-    val number2 = readLine()!!.toInt()
-    val number3 = readLine()!!.toInt()
-    val number4 = readLine()!!.toInt()
-
-    println(isGreater(number1, number2, number3, number4))
-}
+//fun main() {
+//    val listSize = "4".toInt()
+//    val numbers = List(listSize) { readln().toInt() }
+//    val sumFirstTwo = numbers.take(2).fold(0) { acc, num -> acc + num }
+//    val sumLastTwo = numbers.takeLast(2).fold(0) { acc, num -> acc + num }
+//    println(sumFirstTwo > sumLastTwo)
+//}
