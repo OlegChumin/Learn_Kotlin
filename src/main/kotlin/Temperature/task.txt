@@ -1,0 +1,19 @@
+Weather comparison
+Consider a program that reads three numbers representing the temperature in
+Dubai, Moscow, and Hanoi and prints the name of the coldest city.
+If the input number is less than -92 or greater than 57, the temperature
+will be set to the default value, which is the average temperature in the city:
++5 for Moscow, +20 for Hanoi, and +30 for Dubai. If the coldest temperature
+occurs in more than one city, the output is "neither".
+
+Your task is to finish the implementation of the City class and comparison in
+the main function of this program.
+
+
+Sample Input:
+20
+100
+35
+
+Sample Output:
+Moscow
